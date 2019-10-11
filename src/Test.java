@@ -106,6 +106,7 @@ public class Test {
 	
 	private static void typeCasting() {
 		
+		@SuppressWarnings("unused")
 		A a = new A();
 		B b = new B();
 		

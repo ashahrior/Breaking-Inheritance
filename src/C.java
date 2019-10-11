@@ -11,6 +11,7 @@ class C {
 	{
 		System.out.println("Static and Protected() in C");
 	}
+	@SuppressWarnings("unused")
 	private static void ss()
 	{
 		
