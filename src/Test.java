@@ -35,35 +35,37 @@ public class Test {
 	}
 	
 	private static void testParentToChildUpcasting()	{
-		A ab = new B(); // this is upcasting
+		A object_B_class_A_1 = new B(); // this is upcasting
 		/*
-		 * Here ab reference object variable is created
-		 * It ab is of type A and it is assigned an object of type B
+		 * A parent class. B child class.
+		 * object_B_class_A_1 - a reference variable of type A class
+		 * Variable object_B_class_A_1 assigned an object of type B
 		 * Any parent class type variable can hold its child class type object
-		 * when ab created, it will first invoke variable type A's constructor then to B's constructor
-		 * ab can only access the properties of its variable type that is A. It can't access any attribute from B.
-		 * But if B has any method of the same name like any in A and the method in B overrides the method in A
-		 * then ab will invoke the method in B.
+		 * when object_B_class_A_1 created, it will first invoke variable type A's constructor then to B's constructor
+		 * object_B_class_A_1 has access to all of A's properties
+		 * object_B_class_A_1 has access to none of B's properties unless
+		 * both A and B have any property of the same name, then B's property will override A's property.
 		 */
 		System.out.println();
 		
 		/*
-		 * print() function is available in both A and B. So ab will invoke the one in B that has overridden A.
+		 * print() function is available in both A and B. 
+		 * So object_B_class_A_1 will invoke the one in B overriding A.
 		 */
-		ab.print(); 
-		System.out.println(ab.getClass());
-		System.out.println(ab.getClass().getSuperclass());
+		object_B_class_A_1.print(); 
+		System.out.println(object_B_class_A_1.getClass());
+		System.out.println(object_B_class_A_1.getClass().getSuperclass());
 		/*
-		 * ab has no access to print2() method located in B.
+		 * object_B_class_A_1 has no access to print2() method located in B.
 		 */
-		// ab.print2(); 
-		ab.setA_variable(67);
-		System.out.println(ab.getA_variable());
+		// object_B_class_A_1.print2(); 
+		object_B_class_A_1.setA_variable(67);
+		System.out.println(object_B_class_A_1.getA_variable());
 		/*
-		 * ab has direct access to its parent class A's protected properties
+		 * object_B_class_A_1 has direct access to its parent class A's protected properties
 		 */
-		ab.protectedMethodinA();
-		ab.callingPrivateMethodinA();
+		object_B_class_A_1.protectedMethodinA();
+		object_B_class_A_1.callingPrivateMethodinA();
 
 		System.out.println();
 		
@@ -75,27 +77,27 @@ public class Test {
 		 * The following declaration is invalid.
 		 * Child class type reference variable can't hold parent class type object.
 		 */
-		// B ba = new A();
+		// B object_A_class_B_1 = new A();
 		
 		/*
 		 * Here we created a B type object with A type reference variable.
-		 * From what we have learned, ba shouldn't be able to access properties of B class
+		 * From what we have learned, object_B_class_A_2 shouldn't be able to access properties of B class
 		 */
-		A ba = new B();
+		A object_B_class_A_2 = new B();
 		
 		/*
 		 * But if downcasting is performed than this issue could be solved
-		 * Here ba is being downcasted
+		 * Here object_B_class_A_2 is being downcasted
 		 */
 		
 		/*
-		 * instanceof - is used to check that whether is ba is of the parent class
-		 * ba requireds a parent-child relationship in order to downcast it to it's child class
+		 * instanceof - is used to check whether is object_B_class_A_2 is of the parent class
+		 * object_B_class_A_2 requireds a parent-child relationship in order to downcast it to it's child class
 		 */
-		if(ba instanceof A) {
-			((B)ba).printB();	
+		if(object_B_class_A_2 instanceof A) {
+			((B)object_B_class_A_2).printB();	
 
-			/* this is downcasting. ba is being type casted with B.
+			/* this is downcasting. object_B_class_A_2 is being type casted with B.
 			 * Hence gaining access to properties of class B
 			 */
 		}
@@ -132,12 +134,13 @@ public class Test {
 	private static void testA() {
 		A a = new A();
 		
+		
+		//a.a_variable = 2;  
 		/*
 		 * a can't access its own private properties if invoked outside its own class. 
 		 * Here a is trying to access its private property a_variable but it can't.
 		 * a_variable can be manipulated inside class A. But this is inside class Test.
 		 */
-		//a.a_variable = 2;
 		
 		a.setA_variable(3);
 		System.out.println(a.getA_variable());
